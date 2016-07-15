@@ -1,0 +1,23 @@
+@import url("/sites/all/themes/subtheme/css/local.css");
+
+body {font-size:10pt;margin:0 10px;}
+
+.redsquare { 
+	background:url('/sites/default/files/layout/list.gif') no-repeat 0 6px;
+	background-size:13px 13px;
+	padding-left:20px;
+	overflow:auto;
+}
+.cke_wysiwyg_frame ul li { 
+	background:url('/sites/default/files/layout/list.gif') no-repeat 0 6px;
+	background-size:13px 13px;
+	padding-left:20px;
+	overflow:auto;
+}
+.cke_wysiwyg_frame ul {padding-left:12px;}
+a[id]::before {
+    content: "";
+	display:inline;
+    height: auto;
+    margin-top: 0;
+}

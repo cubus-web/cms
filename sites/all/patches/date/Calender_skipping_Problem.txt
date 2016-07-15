@@ -1,0 +1,15 @@
+Date Module
+
+PROBLEM:
+Kalender Block schaltete immer 2 Monate weiter in die Zukunft. Vergangenheit war kein Problem. Vermutlich wurden nur die Monate mit 31 Tagen angezeigt. Es machte keinen Sprung von Juli auf August und keinen von Dez auf Jan. 
+
+THREAD: https://www.drupal.org/node/2375235
+
+PATCH: https://www.drupal.org/files/issues/calendar_pager_broken-2375235-35.patch
+
+Datei:
+sites/all/modules/date/date_views/includes/date_views_plugin_pager.inc (Zeile 284):
+
+- $this->view->date_info->next_date = clone($argument->max_date);
+
++ $this->view->date_info->next_date = clone($argument->min_date);  

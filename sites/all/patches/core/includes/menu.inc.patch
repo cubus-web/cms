@@ -1,0 +1,15 @@
+--- includes/menu.inc.1.401	Thu Jul 08 21:59:32 2010
++++ includes/menu.inc	Thu Jul 08 22:06:03 2010
+@@ -1312,7 +1312,11 @@ function menu_tree_check_access(&$tree, 
+     $nids = array_keys($node_links);
+     $select = db_select('node', 'n');
+     $select->addField('n', 'nid');
+-    $select->condition('n.status', 1);
++    // Exclude menu links of unpublished nodes from the tree, except when a menu
++    // administrator is administering the menu.
++    if (empty($GLOBALS['menu_admin'])) {
++      $select->condition('n.status', 1);
++    }
+     $select->condition('n.nid', $nids, 'IN');
+     $select->addTag('node_access');
+     $nids = $select->execute()->fetchCol();

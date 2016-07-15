@@ -1,0 +1,43 @@
+diff --git a/includes/ajax.inc b/includes/ajax.inc
+index 50e8e28..662a7ab 100644
+--- a/includes/ajax.inc
++++ b/includes/ajax.inc
+@@ -478,7 +478,11 @@ function ajax_deliver($page_callback_result) {
+   // Emit a Content-Type HTTP header if none has been added by the page callback
+   // or by a wrapping delivery callback.
+   if (is_null(drupal_get_http_header('Content-Type'))) {
+-    if (!$iframe_upload) {
++    $is_ie = (strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0') !== FALSE 
++	   || strpos($_SERVER["HTTP_USER_AGENT"], 'MSIE 9.0')!==FALSE
++      || strpos($_SERVER["HTTP_USER_AGENT"], 'MSIE 8.0')!==FALSE
++      || strpos($_SERVER["HTTP_USER_AGENT"], 'WOW64')!==FALSE
++      || strpos($_SERVER["HTTP_USER_AGENT"], 'Trident')!==FALSE);
++    if (!$iframe_upload && !$is_ie) {
+       // Standard JSON can be returned to a browser's XHR object, and to
+       // non-browser user agents.
+       // @see http://www.ietf.org/rfc/rfc4627.txt?number=4627
+diff --git a/includes/common.inc b/includes/common.inc
+index 34fa9b9..dc2603c 100644
+--- a/includes/common.inc
++++ b/includes/common.inc
+@@ -5131,8 +5131,17 @@ function drupal_json_decode($var) {
+  *   (optional) If set, the variable will be converted to JSON and output.
+  */
+ function drupal_json_output($var = NULL) {
+-  // We are returning JSON, so tell the browser.
+-  drupal_add_http_header('Content-Type', 'application/json');
++  if (strpos($_SERVER["HTTP_USER_AGENT"], 'MSIE 8.0')!==FALSE
++      || strpos($_SERVER["HTTP_USER_AGENT"], 'MSIE 9.0')!==FALSE
++	   || strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0') !== FALSE
++      || strpos($_SERVER["HTTP_USER_AGENT"], 'WOW64')!==FALSE
++      || strpos($_SERVER["HTTP_USER_AGENT"], 'Trident')!==FALSE) {
++    // In IE 8 it prevents Javascript to be downloaded instead of executing.
++    drupal_add_http_header('Content-Type', 'application/html; charset=utf-8');
++  }
++  else {
++    // We are returning JSON, so tell the browser.
++    drupal_add_http_header('Content-Type', 'application/json; charset=utf-8');
++  }
+ 
+   if (isset($var)) {
+     echo drupal_json_encode($var);
