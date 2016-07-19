@@ -99,11 +99,11 @@ DirectoryIndex index.php index.html index.htm
   # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   # RewriteRule ^ http%{ENV:protossl}://%1%{REQUEST_URI} [L,R=301]
 
-  // JB Umleitung auf www, damit die Hauptmenüpunkte nicht bei jeder Domain auf die cubus-pm.com verweisen
-  RewriteCond %{HTTP_HOST} .
-  RewriteCond %{HTTP_HOST} !^www\. [NC]
-  RewriteCond %{HTTP_HOST} !^ww1\. [NC]
-  RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]  
+# JB Umleitung auf www, damit die Hauptmenüpunkte nicht bei jeder Domain auf die cubus-pm.com verweisen
+RewriteCond %{HTTP_HOST} .
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} !^ww1\. [NC]
+RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]  
 
   # Modify the RewriteBase if you are using Drupal in a subdirectory or in a
   # VirtualDocumentRoot and the rewrite rules are not working properly.
