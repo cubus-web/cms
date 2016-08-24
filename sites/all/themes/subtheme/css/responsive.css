@@ -412,6 +412,43 @@ body.node-type-aktuelles h1.title.gutter  {
 	width:100%;
 }
 
+.panels-flexible-region-26-right_,
+.panels-flexible-region-25-right_,
+.panels-flexible-region-24-right_,
+.panels-flexible-region-19-right_,
+.panels-flexible-region-23-right_,
+.panels-flexible-region-13-right_,
+.panels-flexible-region-20-right_,
+.panels-flexible-region-22-right_,
+.panels-flexible-column-22-3,
+.panels-flexible-column-26-3,
+.panels-flexible-column-20-3,
+.panels-flexible-column-25-3,
+.panels-flexible-column-19-3,
+.panels-flexible-column-24-3,
+.panels-flexible-column-23-3,
+.panels-flexible-column-13-3 
+{	float: none;
+	width: 100%;}
+.panels-flexible-column-22-main,
+.panels-flexible-column-20-main,
+.panels-flexible-column-26-main,
+.panels-flexible-column-25-main,
+.panels-flexible-column-24-main,
+.panels-flexible-column-19-main,
+.panels-flexible-column-23-main,
+.panels-flexible-column-13-main 
+{float:none; width: 100%;}
+.panels-flexible-22 .panels-flexible-region-inside,
+.panels-flexible-20 .panels-flexible-region-inside,
+.panels-flexible-13 .panels-flexible-region-inside,
+.panels-flexible-26 .panels-flexible-region-inside,
+.panels-flexible-24 .panels-flexible-region-inside,
+.panels-flexible-23 .panels-flexible-region-inside,
+.panels-flexible-19 .panels-flexible-region-inside,
+.panels-flexible-25 .panels-flexible-region-inside 
+{padding:10px;}
+hr {width:100% !important;}
 
 }
 
@@ -420,6 +457,9 @@ body.node-type-aktuelles h1.title.gutter  {
 	h1 { font-size:1.3em; }
 	h1.breit{background-size: 100% auto !important;padding:0 40px; background-position: 0 20px !important;}
 	h2 {  font-size:1.15em;
+
+
+
 }
 
 	/* Tabellenproblem */
@@ -542,3 +582,6 @@ div.form-item div.password-suggestions {width:auto;}
 width:70%;
 margin:0 auto;
 }
+
+
+
